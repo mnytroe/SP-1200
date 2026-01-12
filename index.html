@@ -92,6 +92,7 @@
         .content-area {
             display: flex;
             gap: 18px;
+            position: relative;
         }
 
         /* Left Section */
@@ -105,7 +106,7 @@
             justify-content: center;
             gap: 20px;
             margin-bottom: 8px;
-            font-size: 8px;
+            font-size: 9px;
             color: #c0c0c8;
         }
 
@@ -123,7 +124,7 @@
 
         .menu-title {
             color: #c0c0c8;
-            font-size: 11px;
+            font-size: 12px;
             margin-bottom: 4px;
             text-decoration: underline;
             text-decoration-color: #4a9fdd;
@@ -138,7 +139,7 @@
             display: flex;
             gap: 4px;
             line-height: 1.35;
-            font-size: 6.5px;
+            font-size: 7.5px;
             color: #a0a0a8;
         }
 
@@ -251,8 +252,8 @@
         }
 
         .prog-btn {
-            width: 28px;
-            height: 28px;
+            width: 22px;
+            height: 22px;
             background: linear-gradient(180deg, #f0e4d4 0%, #e0d0bc 50%, #d0c0a8 100%);
             border-radius: 3px;
             box-shadow:
@@ -389,7 +390,7 @@
 
         .slider-track {
             width: 22px;
-            height: 85px;
+            height: 154px;
             background: linear-gradient(180deg, #1a1a20 0%, #0f0f14 100%);
             border-radius: 3px;
             position: relative;
@@ -449,13 +450,14 @@
             display: flex;
             align-items: flex-start;
             gap: 10px;
+            margin-top: 20px;
         }
 
         .bank-column {
             display: flex;
             flex-direction: column;
             gap: 0;
-            padding-top: 10px;
+            padding-top: 120px;
             width: 80px;
         }
 
@@ -550,6 +552,8 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            max-height: 451px;
+            overflow: hidden;
         }
 
         .master-header {
@@ -637,7 +641,7 @@
         /* LCD Display */
         .lcd-display {
             background: linear-gradient(180deg, #0a2a1a 0%, #082818 100%);
-            border: 3px solid #28282e;
+            border: 1px solid #000000;
             border-radius: 4px;
             padding: 12px 10px;
             margin-bottom: 6px;
@@ -780,7 +784,7 @@
         }
 
         .key-btn {
-            width: 30px;
+            width: 22px;
             height: 22px;
             background: linear-gradient(180deg, #f0e4d4 0%, #e0d0bc 50%, #d0c0a8 100%);
             border-radius: 3px;
@@ -806,6 +810,18 @@
             margin-bottom: 8px;
         }
 
+        /* Additional Controls */
+        .additional-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            position: absolute;
+            top: 465px;
+            right: 0;
+            width: 200px;
+        }
+
         /* Yes/No Row */
         .yesno-row {
             display: flex;
@@ -815,7 +831,7 @@
         }
 
         .yesno-btn {
-            width: 30px;
+            width: 22px;
             height: 22px;
             background: linear-gradient(180deg, #f0e4d4 0%, #e0d0bc 50%, #d0c0a8 100%);
             border-radius: 3px;
@@ -1220,59 +1236,13 @@
                             <span class="knob-label">Metronome<br>Volume</span>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Numeric Keypad -->
-                    <div class="keypad">
-                        <div class="key-unit">
-                            <div class="key-label-top">1</div>
-                            <div class="key-btn"></div>
-                        </div>
-                        <div class="key-unit">
-                            <div class="key-label-top">2</div>
-                            <div class="key-btn"></div>
-                        </div>
-                        <div class="key-unit">
-                            <div class="key-label-top">3</div>
-                            <div class="key-btn"></div>
-                        </div>
-                        <div class="key-unit">
-                            <div class="key-label-top">4</div>
-                            <div class="key-btn"></div>
-                        </div>
-                        <div class="key-unit">
-                            <div class="key-label-top">5</div>
-                            <div class="key-btn"></div>
-                        </div>
-                        <div class="key-unit">
-                            <div class="key-label-top">6</div>
-                            <div class="key-btn"></div>
-                        </div>
-                        <div class="key-unit">
-                            <div class="key-label-top">7</div>
-                            <div class="key-btn"></div>
-                            <div class="key-label-bottom">No</div>
-                        </div>
-                        <div class="key-unit">
-                            <div class="key-label-top">8</div>
-                            <div class="key-btn"></div>
-                        </div>
-                        <div class="key-unit">
-                            <div class="key-label-top">9</div>
-                            <div class="key-btn"></div>
-                            <div class="key-label-bottom">Yes</div>
-                        </div>
-                    </div>
-
-                    <!-- Zero Button -->
-                    <div class="zero-row">
-                        <div class="key-unit">
-                            <div class="key-label-top">0</div>
-                            <div class="key-btn"></div>
-                        </div>
-                    </div>
-
-                    <!-- Blue Line -->
-                    <div class="blue-line blue-line-right"></div>
+                <!-- Additional Controls -->
+                <div class="additional-controls">
+                    <div class="pad"></div>
+                    <div class="pad"></div>
+                    <div class="record-btn"></div>
                 </div>
             </div>
 
