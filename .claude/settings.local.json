@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start C:CursorSP-1200index.html)"
+    ]
+  }
+}

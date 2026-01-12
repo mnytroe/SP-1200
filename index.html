@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-mu SP-1200</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(180deg, #2a2a30 0%, #1a1a20 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Roboto Condensed', Arial, sans-serif;
+            padding: 40px;
+        }
+
+        .sp1200 {
+            width: 1100px;
+            background: linear-gradient(180deg, #1a1a1f 0%, #0f0f12 100%);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow:
+                0 40px 80px rgba(0,0,0,0.6),
+                inset 0 1px 0 rgba(255,255,255,0.05),
+                inset 0 -1px 0 rgba(0,0,0,0.5);
+            border: 3px solid #0a0a0c;
+        }
+
+        .main-panel {
+            background: linear-gradient(180deg, #52525a 0%, #48484f 50%, #42424a 100%);
+            border-radius: 8px;
+            padding: 18px 22px 100px 22px;
+            position: relative;
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Header Bar */
+        .header-bar {
+            background: linear-gradient(180deg, #c0c0c8 0%, #b0b0b8 50%, #a0a0a8 100%);
+            margin: -18px -22px 12px -22px;
+            padding: 8px 20px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow:
+                inset 0 2px 0 rgba(255,255,255,0.4),
+                inset 0 -1px 0 rgba(0,0,0,0.1);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .sp-logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2a2a30;
+            letter-spacing: 3px;
+        }
+
+        .sp-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2a2a30;
+            letter-spacing: 2px;
+            margin-left: 4px;
+        }
+
+        .sp-subtitle {
+            font-size: 8px;
+            color: #4a4a50;
+            letter-spacing: 2px;
+            margin-left: 8px;
+            text-transform: uppercase;
+        }
+
+        /* Main Content Area */
+        .content-area {
+            display: flex;
+            gap: 18px;
+        }
+
+        /* Left Section */
+        .left-section {
+            flex: 1;
+        }
+
+        /* Text Menus */
+        .text-menus {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 8px;
+            font-size: 8px;
+            color: #c0c0c8;
+        }
+
+        .menu-column {
+            min-width: 95px;
+        }
+
+        .menu-column.sync {
+            min-width: 70px;
+        }
+
+        .menu-column.sample {
+            min-width: 90px;
+        }
+
+        .menu-title {
+            color: #c0c0c8;
+            font-size: 11px;
+            margin-bottom: 4px;
+            text-decoration: underline;
+            text-decoration-color: #4a9fdd;
+            text-underline-offset: 2px;
+        }
+
+        .menu-title::first-letter {
+            color: #ffffff;
+        }
+
+        .menu-item {
+            display: flex;
+            gap: 4px;
+            line-height: 1.35;
+            font-size: 6.5px;
+            color: #a0a0a8;
+        }
+
+        .menu-number {
+            color: #a0a0a8;
+            min-width: 12px;
+        }
+
+        /* Set-up buttons column */
+        .setup-with-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .setup-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding-top: 18px;
+        }
+
+        .setup-btn {
+            width: 22px;
+            height: 14px;
+            background: linear-gradient(180deg, #f0e4d4 0%, #e0d0bc 50%, #d0c0a8 100%);
+            border-radius: 2px;
+            box-shadow:
+                0 1px 0 #9a8a7a,
+                0 2px 3px rgba(0,0,0,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: transform 0.05s;
+        }
+
+        .setup-btn:active {
+            transform: translateY(1px);
+            box-shadow:
+                0 0 0 #9a8a7a,
+                0 1px 2px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        /* Blue divider lines */
+        .blue-line {
+            height: 2px;
+            background: linear-gradient(90deg, #1a6aaa 0%, #3a8acc 50%, #1a6aaa 100%);
+            margin: 8px 0;
+            border-radius: 1px;
+        }
+
+        .blue-line-right {
+            width: 200px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        /* Programming Section */
+        .section-title {
+            color: #b8b8c0;
+            font-size: 11px;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .section-title::first-letter {
+            color: #ffffff;
+        }
+
+        .programming-section {
+            margin-bottom: 10px;
+        }
+
+        .prog-row {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 2px;
+        }
+
+        .prog-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50px;
+        }
+
+        .prog-unit-first {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .prog-leds {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .prog-led-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .prog-label {
+            font-size: 7px;
+            color: #a0a0a8;
+        }
+
+        .prog-btn {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(180deg, #f0e4d4 0%, #e0d0bc 50%, #d0c0a8 100%);
+            border-radius: 3px;
+            box-shadow:
+                0 2px 0 #9a8a7a,
+                0 3px 5px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: transform 0.05s;
+        }
+
+        .prog-btn:active {
+            transform: translateY(2px);
+            box-shadow:
+                0 0 0 #9a8a7a,
+                0 1px 2px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        .prog-led {
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle at 30% 30%, #4a2a2a 0%, #2a0a0a 100%);
+            border-radius: 50%;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .prog-led.active {
+            background: radial-gradient(circle at 30% 30%, #ff6666 0%, #cc2222 100%);
+            box-shadow: 0 0 6px #ff2222, inset 0 1px 1px rgba(255,255,255,0.4);
+        }
+
+        .btn-label-top {
+            font-size: 5.5px;
+            color: #a0a0a8;
+            text-align: center;
+            line-height: 1.1;
+            margin-bottom: 2px;
+            height: 14px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .btn-label-bottom {
+            font-size: 5.5px;
+            color: #a0a0a8;
+            text-align: center;
+            line-height: 1.1;
+            margin-top: 2px;
+            height: 14px;
+        }
+
+        /* Performance Section */
+        .performance-section {
+            margin-bottom: 8px;
+        }
+
+        .performance-content {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .perf-left {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-top: 10px;
+            width: 80px;
+        }
+
+        .perf-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .perf-btn {
+            width: 22px;
+            height: 22px;
+            background: linear-gradient(180deg, #f0e4d4 0%, #e0d0bc 50%, #d0c0a8 100%);
+            border-radius: 3px;
+            box-shadow:
+                0 2px 0 #9a8a7a,
+                0 3px 5px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: transform 0.05s;
+        }
+
+        .perf-btn:active {
+            transform: translateY(2px);
+            box-shadow:
+                0 0 0 #9a8a7a,
+                0 1px 2px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        .perf-btn-spacer {
+            width: 22px;
+            height: 22px;
+        }
+
+        .perf-led {
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle at 30% 30%, #4a2a2a 0%, #2a0a0a 100%);
+            border-radius: 50%;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .perf-led.active {
+            background: radial-gradient(circle at 30% 30%, #ff6666 0%, #cc2222 100%);
+            box-shadow: 0 0 6px #ff2222, inset 0 1px 1px rgba(255,255,255,0.4);
+        }
+
+        .perf-label {
+            font-size: 7px;
+            color: #a0a0a8;
+        }
+
+        .sliders-container {
+            display: flex;
+            gap: 18px;
+            margin-left: 0;
+        }
+
+        .slider-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50px;
+        }
+
+        .slider-track {
+            width: 22px;
+            height: 85px;
+            background: linear-gradient(180deg, #1a1a20 0%, #0f0f14 100%);
+            border-radius: 3px;
+            position: relative;
+            box-shadow: 
+                inset 0 2px 4px rgba(0,0,0,0.6),
+                inset 1px 0 0 rgba(0,0,0,0.3),
+                inset -1px 0 0 rgba(0,0,0,0.3);
+        }
+
+        .slider-track::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: linear-gradient(180deg, #333 0%, #222 100%);
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+
+        .slider-knob {
+            width: 36px;
+            height: 14px;
+            background: linear-gradient(180deg, #7a7a82 0%, #5a5a62 50%, #4a4a52 100%);
+            border-radius: 2px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow:
+                0 2px 4px rgba(0,0,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -1px 0 rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+        .slider-knob::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            right: 5px;
+            height: 2px;
+            background: #ffffff;
+            transform: translateY(-50%);
+            box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+        }
+
+        .slider-number {
+            font-size: 9px;
+            color: #a0a0a8;
+            margin-top: 3px;
+        }
+
+        /* Pads Section */
+        .pads-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .bank-column {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            padding-top: 10px;
+            width: 80px;
+        }
+
+        .bank-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .bank-row:first-child {
+            margin-bottom: 4px;
+        }
+
+        .bank-row:nth-child(2) {
+            margin-bottom: 8px;
+        }
+
+        .bank-row:nth-child(4) {
+            margin-top: -4px;
+            margin-bottom: 4px;
+        }
+
+        .bank-led {
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle at 30% 30%, #4a2a2a 0%, #2a0a0a 100%);
+            border-radius: 50%;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .bank-led.active {
+            background: radial-gradient(circle at 30% 30%, #ff6666 0%, #cc2222 100%);
+            box-shadow: 0 0 6px #ff2222, inset 0 1px 1px rgba(255,255,255,0.4);
+        }
+
+        .bank-label {
+            font-size: 7px;
+            color: #a0a0a8;
+        }
+
+        .bank-btn-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 22px;
+            margin-bottom: 8px;
+        }
+
+        .pads-container {
+            display: flex;
+            gap: 18px;
+            margin-left: 0;
+        }
+
+        .pad-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50px;
+        }
+
+        .pad {
+            width: 50px;
+            height: 45px;
+            background: linear-gradient(180deg, #38383e 0%, #28282e 50%, #1a1a1f 100%);
+            border-radius: 4px;
+            box-shadow:
+                0 4px 0 #0a0a0e,
+                0 6px 10px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.08);
+            cursor: pointer;
+            transition: transform 0.05s, box-shadow 0.05s;
+        }
+
+        .pad:active {
+            transform: translateY(3px);
+            box-shadow:
+                0 1px 0 #0a0a0e,
+                0 2px 4px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        .pad-number {
+            font-size: 9px;
+            color: #a0a0a8;
+            margin-top: 3px;
+        }
+
+        /* Right Section - Master Control */
+        .right-section {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .master-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .sample-section {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sample-title {
+            color: #4a9fdd;
+            font-size: 10px;
+            text-decoration: underline;
+        }
+
+        .sample-menu {
+            font-size: 6.5px;
+            color: #a0a0a8;
+            line-height: 1.35;
+        }
+
+        .master-control-section {
+            text-align: right;
+        }
+
+        .master-title {
+            color: #c0c0c8;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-decoration: underline;
+            text-decoration-color: #4a9fdd;
+            text-underline-offset: 2px;
+        }
+
+        .master-title .first-letter {
+            color: #ffffff;
+        }
+
+        /* Sample controls row */
+        .sample-controls {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 5px;
+        }
+
+        .record-btn {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(180deg, #dd3333 0%, #bb1111 50%, #991111 100%);
+            border-radius: 3px;
+            box-shadow:
+                0 2px 0 #550000,
+                0 3px 6px rgba(0,0,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            cursor: pointer;
+        }
+
+        .record-btn:active {
+            transform: translateY(2px);
+            box-shadow:
+                0 0 0 #550000,
+                0 1px 2px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .gain-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gain-label {
+            font-size: 7px;
+            color: #a0a0a8;
+            margin-top: 3px;
+        }
+
+        /* LCD Display */
+        .lcd-display {
+            background: linear-gradient(180deg, #0a2a1a 0%, #082818 100%);
+            border: 3px solid #28282e;
+            border-radius: 4px;
+            padding: 12px 10px;
+            margin-bottom: 6px;
+            box-shadow: 
+                inset 0 0 15px rgba(0,0,0,0.5),
+                inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .lcd-text {
+            font-family: 'Courier New', monospace;
+            color: #22cc55;
+            font-size: 11px;
+            text-shadow: 0 0 6px #22cc55;
+            letter-spacing: 1px;
+        }
+
+        /* Transport Controls */
+        .tempo-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .transport-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .transport-btn {
+            width: 28px;
+            height: 18px;
+            background: linear-gradient(180deg, #f0e4d4 0%, #e0d0bc 50%, #d0c0a8 100%);
+            border-radius: 2px;
+            box-shadow:
+                0 2px 0 #9a8a7a,
+                0 3px 4px rgba(0,0,0,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+            cursor: pointer;
+        }
+
+        .transport-btn:active {
+            transform: translateY(2px);
+            box-shadow:
+                0 0 0 #9a8a7a,
+                0 1px 2px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        .transport-label-bottom {
+            font-size: 5.5px;
+            color: #a0a0a8;
+            text-align: center;
+            line-height: 1.1;
+            margin-top: 2px;
+            height: 12px;
+        }
+
+        .enter-btn {
+            width: 36px;
+        }
+
+        /* Knob */
+        .knob {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #2a2a32 0%, #1a1a22 50%, #28282f 100%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow:
+                0 3px 6px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.1),
+                inset 0 -1px 0 rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+
+        .knob::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            width: 3px;
+            height: 10px;
+            background: #888;
+            transform: translateX(-50%) rotate(45deg);
+            border-radius: 1px;
+        }
+
+        .knob-label {
+            font-size: 6px;
+            color: #a0a0a8;
+            margin-top: 3px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* Knobs Row */
+        .knobs-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 8px;
+        }
+
+        /* Numeric Keypad */
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            gap: 20px;
+            margin-top: 12px;
+            margin-bottom: 8px;
+            justify-content: center;
+        }
+
+        .key-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .key-label-top {
+            font-size: 5.5px;
+            color: #a0a0a8;
+            text-align: center;
+            line-height: 1.1;
+            margin-bottom: 2px;
+            height: 12px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .key-label-bottom {
+            font-size: 5.5px;
+            color: #a0a0a8;
+            text-align: center;
+            line-height: 1.1;
+            margin-top: 2px;
+        }
+
+        .key-btn {
+            width: 30px;
+            height: 22px;
+            background: linear-gradient(180deg, #f0e4d4 0%, #e0d0bc 50%, #d0c0a8 100%);
+            border-radius: 3px;
+            box-shadow:
+                0 2px 0 #9a8a7a,
+                0 3px 4px rgba(0,0,0,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+            cursor: pointer;
+        }
+
+        .key-btn:active {
+            transform: translateY(2px);
+            box-shadow:
+                0 0 0 #9a8a7a,
+                0 1px 2px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        /* Zero Row */
+        .zero-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        /* Yes/No Row */
+        .yesno-row {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .yesno-btn {
+            width: 30px;
+            height: 22px;
+            background: linear-gradient(180deg, #f0e4d4 0%, #e0d0bc 50%, #d0c0a8 100%);
+            border-radius: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow:
+                0 2px 0 #9a8a7a,
+                0 3px 4px rgba(0,0,0,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+            cursor: pointer;
+        }
+
+        .yesno-btn:active {
+            transform: translateY(2px);
+            box-shadow:
+                0 0 0 #9a8a7a,
+                0 1px 2px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        .yesno-btn span {
+            font-size: 7px;
+            color: #333;
+        }
+
+        /* Bottom Transport */
+        .bottom-transport {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .bottom-btn {
+            width: 48px;
+            height: 24px;
+            background: linear-gradient(180deg, #f0e4d4 0%, #e0d0bc 50%, #d0c0a8 100%);
+            border-radius: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow:
+                0 2px 0 #9a8a7a,
+                0 3px 4px rgba(0,0,0,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+            cursor: pointer;
+        }
+
+        .bottom-btn:active {
+            transform: translateY(2px);
+            box-shadow:
+                0 0 0 #9a8a7a,
+                0 1px 2px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        .bottom-btn.red {
+            background: linear-gradient(180deg, #dd3333 0%, #bb1111 50%, #991111 100%);
+            box-shadow:
+                0 2px 0 #550000,
+                0 3px 4px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        .bottom-btn.red:active {
+            box-shadow:
+                0 0 0 #550000,
+                0 1px 2px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .bottom-btn span {
+            font-size: 5.5px;
+            color: #333;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .bottom-btn.red span {
+            color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(180deg, #c0c0c8 0%, #b0b0b8 50%, #a0a0a8 100%);
+            margin: 60px -22px -100px -22px;
+            padding: 10px 20px;
+            border-radius: 0 0 8px 8px;
+            box-shadow:
+                inset 0 2px 0 rgba(255,255,255,0.4),
+                inset 0 -1px 0 rgba(0,0,0,0.1);
+        }
+
+        .footer-text {
+            color: #2a2a30;
+            font-size: 14px;
+            font-style: italic;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sp1200">
+        <div class="main-panel">
+            <!-- Header Bar -->
+            <div class="header-bar">
+                <div class="logo-section">
+                    <span class="sp-logo">SP</span>
+                    <span class="sp-number">1200</span>
+                    <span class="sp-subtitle">SAMPLING PERCUSSION</span>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Left Section -->
+                <div class="left-section">
+                    <!-- Text Menus -->
+                    <div class="text-menus">
+                        <div class="menu-column">
+                            <div class="menu-title">Set-up</div>
+                            <div class="menu-item"><span class="menu-number">11</span> Multi Pitch</div>
+                            <div class="menu-item"><span class="menu-number">12</span> Multi Level</div>
+                            <div class="menu-item"><span class="menu-number">13</span> Exit Multi Mode</div>
+                            <div class="menu-item"><span class="menu-number">14</span> Dynamic Buttons</div>
+                            <div class="menu-item"><span class="menu-number">15</span> Delete Mix</div>
+                            <div class="menu-item"><span class="menu-number">16</span> Select Mix</div>
+                            <div class="menu-item"><span class="menu-number">17</span> Channel Assign</div>
+                            <div class="menu-item"><span class="menu-number">18</span> Decay/Tune Select</div>
+                            <div class="menu-item"><span class="menu-number">19</span> Loop/Truncate</div>
+                            <div class="menu-item"><span class="menu-number">20</span> Delete Sound</div>
+                            <div class="menu-item"><span class="menu-number">21</span> 1st Song/Step</div>
+                            <div class="menu-item"><span class="menu-number">22</span> MIDI Parameters</div>
+                            <div class="menu-item"><span class="menu-number">23</span> Special</div>
+                        </div>
+                        <div class="menu-column">
+                            <div class="menu-title">Disk</div>
+                            <div class="menu-item"><span class="menu-number">1</span> Save Sequences</div>
+                            <div class="menu-item"><span class="menu-number">2</span> Save Sounds</div>
+                            <div class="menu-item"><span class="menu-number">3</span> Load Sequences</div>
+                            <div class="menu-item"><span class="menu-number">4</span> Load Segment #</div>
+                            <div class="menu-item"><span class="menu-number">5</span> Load Sounds</div>
+                            <div class="menu-item"><span class="menu-number">6</span> Load Sound #</div>
+                            <div class="menu-item"><span class="menu-number">7</span> Catalog Sequences</div>
+                            <div class="menu-item"><span class="menu-number">8</span> Catalog Sounds</div>
+                            <div class="menu-item"><span class="menu-number">9</span> Format/Copy Software</div>
+                            <div class="menu-item"><span class="menu-number">0</span> Load Sequences and Sounds</div>
+                        </div>
+                        <div class="menu-column sync">
+                            <div class="menu-title">Sync</div>
+                            <div class="menu-item"><span class="menu-number">1</span> Internal</div>
+                            <div class="menu-item"><span class="menu-number">2</span> MIDI</div>
+                            <div class="menu-item"><span class="menu-number">3</span> SMPTE</div>
+                            <div class="menu-item"><span class="menu-number">4</span> Click</div>
+                        </div>
+                        <div class="menu-column sample">
+                            <div class="menu-title">Sample</div>
+                            <div class="sample-controls">
+                                <div class="record-btn"></div>
+                                <div class="gain-section">
+                                    <div class="knob"></div>
+                                    <span class="gain-label">Gain</span>
+                                </div>
+                            </div>
+                            <div class="menu-item"><span class="menu-number">1</span> VU Mode</div>
+                            <div class="menu-item"><span class="menu-number">2</span> Assign Voice</div>
+                            <div class="menu-item"><span class="menu-number">3</span> Level</div>
+                            <div class="menu-item"><span class="menu-number">4</span> Threshold Set</div>
+                            <div class="menu-item"><span class="menu-number">5</span> Sample Length</div>
+                            <div class="menu-item"><span class="menu-number">6</span> Re-Sample</div>
+                            <div class="menu-item"><span class="menu-number">7</span> Arm Sampling</div>
+                            <div class="menu-item"><span class="menu-number">8</span> Force Sampling</div>
+                        </div>
+                    </div>
+
+                    <!-- Programming Section -->
+                    <div class="programming-section">
+                        <div class="section-title">Programming</div>
+                        <div class="blue-line"></div>
+                        <div class="prog-row">
+                            <div class="prog-unit-first">
+                                <div class="prog-btn"></div>
+                                <div class="prog-leds">
+                                    <div class="prog-led-row">
+                                        <div class="prog-led active"></div>
+                                        <span class="prog-label">Song</span>
+                                    </div>
+                                    <div class="prog-led-row">
+                                        <div class="prog-led"></div>
+                                        <span class="prog-label">Segment</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="prog-unit">
+                                <div class="btn-label-top">Trigger</div>
+                                <div class="prog-btn"></div>
+                                <div class="btn-label-bottom">Metronome</div>
+                            </div>
+                            <div class="prog-unit">
+                                <div class="btn-label-top">Repeat</div>
+                                <div class="prog-btn"></div>
+                                <div class="btn-label-bottom">Swing</div>
+                            </div>
+                            <div class="prog-unit">
+                                <div class="btn-label-top">Subseq</div>
+                                <div class="prog-btn"></div>
+                                <div class="btn-label-bottom">Copy</div>
+                            </div>
+                            <div class="prog-unit">
+                                <div class="btn-label-top">End</div>
+                                <div class="prog-btn"></div>
+                                <div class="btn-label-bottom">Time<br>Signature</div>
+                            </div>
+                            <div class="prog-unit">
+                                <div class="btn-label-top">Insert</div>
+                                <div class="prog-btn"></div>
+                                <div class="btn-label-bottom">Segment<br>Length</div>
+                            </div>
+                            <div class="prog-unit">
+                                <div class="btn-label-top">Delete</div>
+                                <div class="prog-btn"></div>
+                                <div class="btn-label-bottom">Erase</div>
+                            </div>
+                            <div class="prog-unit">
+                                <div class="btn-label-top">Tempo<br>Change</div>
+                                <div class="prog-btn"></div>
+                                <div class="btn-label-bottom">Auto<br>Correct</div>
+                            </div>
+                            <div class="prog-unit">
+                                <div class="btn-label-top">Mix<br>Change</div>
+                                <div class="prog-btn"></div>
+                                <div class="btn-label-bottom">Step<br>Program</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Section -->
+                    <div class="performance-section">
+                        <div class="section-title">Performance</div>
+                        <div class="blue-line"></div>
+                        <div class="performance-content">
+                            <div class="perf-left">
+                                <div class="perf-row">
+                                    <div class="perf-btn-spacer"></div>
+                                    <div class="perf-led active"></div>
+                                    <span class="perf-label">Tune/Decay</span>
+                                </div>
+                                <div class="perf-row">
+                                    <div class="perf-btn"></div>
+                                    <div class="perf-led"></div>
+                                    <span class="perf-label">Mix</span>
+                                </div>
+                                <div class="perf-row">
+                                    <div class="perf-btn-spacer"></div>
+                                    <div class="perf-led"></div>
+                                    <span class="perf-label">Multi Mode</span>
+                                </div>
+                            </div>
+                            <div class="sliders-container">
+                                <div class="slider-unit">
+                                    <div class="slider-track"><div class="slider-knob" style="top: 55%;"></div></div>
+                                    <span class="slider-number">1</span>
+                                </div>
+                                <div class="slider-unit">
+                                    <div class="slider-track"><div class="slider-knob" style="top: 48%;"></div></div>
+                                    <span class="slider-number">2</span>
+                                </div>
+                                <div class="slider-unit">
+                                    <div class="slider-track"><div class="slider-knob" style="top: 62%;"></div></div>
+                                    <span class="slider-number">3</span>
+                                </div>
+                                <div class="slider-unit">
+                                    <div class="slider-track"><div class="slider-knob" style="top: 42%;"></div></div>
+                                    <span class="slider-number">4</span>
+                                </div>
+                                <div class="slider-unit">
+                                    <div class="slider-track"><div class="slider-knob" style="top: 58%;"></div></div>
+                                    <span class="slider-number">5</span>
+                                </div>
+                                <div class="slider-unit">
+                                    <div class="slider-track"><div class="slider-knob" style="top: 50%;"></div></div>
+                                    <span class="slider-number">6</span>
+                                </div>
+                                <div class="slider-unit">
+                                    <div class="slider-track"><div class="slider-knob" style="top: 38%;"></div></div>
+                                    <span class="slider-number">7</span>
+                                </div>
+                                <div class="slider-unit">
+                                    <div class="slider-track"><div class="slider-knob" style="top: 32%;"></div></div>
+                                    <span class="slider-number">8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pads Section -->
+                    <div class="pads-section">
+                        <div class="bank-column">
+                            <div class="bank-row">
+                                <div class="perf-btn-spacer"></div>
+                                <div class="bank-led active"></div>
+                                <span class="bank-label">A</span>
+                            </div>
+                            <div class="bank-row">
+                                <div class="perf-btn-spacer"></div>
+                                <div class="bank-led"></div>
+                                <span class="bank-label">B</span>
+                            </div>
+                            <div class="bank-btn-row">
+                                <div class="perf-btn"></div>
+                            </div>
+                            <div class="bank-row">
+                                <div class="perf-btn-spacer"></div>
+                                <div class="bank-led"></div>
+                                <span class="bank-label">C</span>
+                            </div>
+                            <div class="bank-row">
+                                <div class="perf-btn-spacer"></div>
+                                <div class="bank-led"></div>
+                                <span class="bank-label">D</span>
+                            </div>
+                        </div>
+                        <div class="pads-container">
+                            <div class="pad-unit">
+                                <div class="pad"></div>
+                                <span class="pad-number">1</span>
+                            </div>
+                            <div class="pad-unit">
+                                <div class="pad"></div>
+                                <span class="pad-number">2</span>
+                            </div>
+                            <div class="pad-unit">
+                                <div class="pad"></div>
+                                <span class="pad-number">3</span>
+                            </div>
+                            <div class="pad-unit">
+                                <div class="pad"></div>
+                                <span class="pad-number">4</span>
+                            </div>
+                            <div class="pad-unit">
+                                <div class="pad"></div>
+                                <span class="pad-number">5</span>
+                            </div>
+                            <div class="pad-unit">
+                                <div class="pad"></div>
+                                <span class="pad-number">6</span>
+                            </div>
+                            <div class="pad-unit">
+                                <div class="pad"></div>
+                                <span class="pad-number">7</span>
+                            </div>
+                            <div class="pad-unit">
+                                <div class="pad"></div>
+                                <span class="pad-number">8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Section - Master Control -->
+                <div class="right-section">
+                    <div class="master-header">
+                        <div class="master-control-section">
+                            <div class="master-title"><span class="first-letter">M</span>aster <span class="first-letter">C</span>ontrol</div>
+                        </div>
+                    </div>
+
+                    <!-- LCD Display -->
+                    <div class="lcd-display">
+                        <div class="lcd-text">SP-1200 READY</div>
+                    </div>
+
+                    <!-- Tempo/Transport Row -->
+                    <div class="tempo-row">
+                        <div class="transport-unit">
+                            <div class="transport-btn"></div>
+                            <div class="transport-label-bottom">Tempo</div>
+                        </div>
+                        <div class="transport-unit">
+                            <div class="transport-btn"></div>
+                            <div class="transport-label-bottom">◀</div>
+                        </div>
+                        <div class="transport-unit">
+                            <div class="transport-btn"></div>
+                            <div class="transport-label-bottom">▶</div>
+                        </div>
+                        <div class="transport-unit">
+                            <div class="transport-btn enter-btn"></div>
+                            <div class="transport-label-bottom">Enter</div>
+                        </div>
+                    </div>
+
+                    <!-- Knobs -->
+                    <div class="knobs-row">
+                        <div class="gain-section">
+                            <div class="knob"></div>
+                            <span class="knob-label">Mix<br>Volume</span>
+                        </div>
+                        <div class="gain-section">
+                            <div class="knob"></div>
+                            <span class="knob-label">Metronome<br>Volume</span>
+                        </div>
+                    </div>
+
+                    <!-- Numeric Keypad -->
+                    <div class="keypad">
+                        <div class="key-unit">
+                            <div class="key-label-top">1</div>
+                            <div class="key-btn"></div>
+                        </div>
+                        <div class="key-unit">
+                            <div class="key-label-top">2</div>
+                            <div class="key-btn"></div>
+                        </div>
+                        <div class="key-unit">
+                            <div class="key-label-top">3</div>
+                            <div class="key-btn"></div>
+                        </div>
+                        <div class="key-unit">
+                            <div class="key-label-top">4</div>
+                            <div class="key-btn"></div>
+                        </div>
+                        <div class="key-unit">
+                            <div class="key-label-top">5</div>
+                            <div class="key-btn"></div>
+                        </div>
+                        <div class="key-unit">
+                            <div class="key-label-top">6</div>
+                            <div class="key-btn"></div>
+                        </div>
+                        <div class="key-unit">
+                            <div class="key-label-top">7</div>
+                            <div class="key-btn"></div>
+                            <div class="key-label-bottom">No</div>
+                        </div>
+                        <div class="key-unit">
+                            <div class="key-label-top">8</div>
+                            <div class="key-btn"></div>
+                        </div>
+                        <div class="key-unit">
+                            <div class="key-label-top">9</div>
+                            <div class="key-btn"></div>
+                            <div class="key-label-bottom">Yes</div>
+                        </div>
+                    </div>
+
+                    <!-- Zero Button -->
+                    <div class="zero-row">
+                        <div class="key-unit">
+                            <div class="key-label-top">0</div>
+                            <div class="key-btn"></div>
+                        </div>
+                    </div>
+
+                    <!-- Blue Line -->
+                    <div class="blue-line blue-line-right"></div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <span class="footer-text">E-mu Systems, Inc.</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
