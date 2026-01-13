@@ -109,6 +109,62 @@
             color: #c0c0c8;
         }
 
+        .menu-column-wrapper {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .menu-column-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 9px;
+            padding-top: 19px;
+        }
+
+        .menu-column-wrapper:last-child .menu-column-controls {
+            padding-top: 19px;
+        }
+
+        .menu-column-led {
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle at 30% 30%, #4a2a2a 0%, #2a0a0a 100%);
+            border-radius: 50%;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .menu-column-btn {
+            width: 22px;
+            height: 22px;
+            background: linear-gradient(180deg, #f0e4d4 0%, #e0d0bc 50%, #d0c0a8 100%);
+            border-radius: 3px;
+            box-shadow:
+                0 2px 0 #9a8a7a,
+                0 3px 5px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: transform 0.05s;
+        }
+
+        .menu-column-btn:active {
+            transform: translateY(2px);
+            box-shadow:
+                0 0 0 #9a8a7a,
+                0 1px 2px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        .menu-column-controls-inline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            margin: 6px 0 11px 0;
+            width: 22px;
+        }
+
         .menu-column {
             min-width: 95px;
         }
@@ -610,6 +666,7 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 5px;
+            margin-top: 12px;
         }
 
         .record-btn {
@@ -640,6 +697,10 @@
 
         .additional-controls .gain-section .record-btn {
             margin-top: 12px;
+        }
+
+        .additional-controls .gain-section .pad-label {
+            margin-top: 14px;
         }
 
         .gain-label {
@@ -962,37 +1023,53 @@
                 <div class="left-section">
                     <!-- Text Menus -->
                     <div class="text-menus">
-                        <div class="menu-column">
-                            <div class="menu-title">Set-up</div>
-                            <div class="menu-item"><span class="menu-number">11</span> Multi Pitch</div>
-                            <div class="menu-item"><span class="menu-number">12</span> Multi Level</div>
-                            <div class="menu-item"><span class="menu-number">13</span> Exit Multi Mode</div>
-                            <div class="menu-item"><span class="menu-number">14</span> Dynamic Buttons</div>
-                            <div class="menu-item"><span class="menu-number">15</span> Delete Mix</div>
-                            <div class="menu-item"><span class="menu-number">16</span> Select Mix</div>
-                            <div class="menu-item"><span class="menu-number">17</span> Channel Assign</div>
-                            <div class="menu-item"><span class="menu-number">18</span> Decay/Tune Select</div>
-                            <div class="menu-item"><span class="menu-number">19</span> Loop/Truncate</div>
-                            <div class="menu-item"><span class="menu-number">20</span> Delete Sound</div>
-                            <div class="menu-item"><span class="menu-number">21</span> 1st Song/Step</div>
-                            <div class="menu-item"><span class="menu-number">22</span> MIDI Parameters</div>
-                            <div class="menu-item"><span class="menu-number">23</span> Special</div>
+                        <div class="menu-column-wrapper">
+                            <div class="menu-column-controls">
+                                <div class="menu-column-led"></div>
+                                <div class="menu-column-btn"></div>
+                            </div>
+                            <div class="menu-column">
+                                <div class="menu-title">Set-up</div>
+                                <div class="menu-item"><span class="menu-number">11</span> Multi Pitch</div>
+                                <div class="menu-item"><span class="menu-number">12</span> Multi Level</div>
+                                <div class="menu-item"><span class="menu-number">13</span> Exit Multi Mode</div>
+                                <div class="menu-item"><span class="menu-number">14</span> Dynamic Buttons</div>
+                                <div class="menu-item"><span class="menu-number">15</span> Delete Mix</div>
+                                <div class="menu-item"><span class="menu-number">16</span> Select Mix</div>
+                                <div class="menu-item"><span class="menu-number">17</span> Channel Assign</div>
+                                <div class="menu-item"><span class="menu-number">18</span> Decay/Tune Select</div>
+                                <div class="menu-item"><span class="menu-number">19</span> Loop/Truncate</div>
+                                <div class="menu-item"><span class="menu-number">20</span> Delete Sound</div>
+                                <div class="menu-item"><span class="menu-number">21</span> 1st Song/Step</div>
+                                <div class="menu-item"><span class="menu-number">22</span> MIDI Parameters</div>
+                                <div class="menu-item"><span class="menu-number">23</span> Special</div>
+                            </div>
                         </div>
-                        <div class="menu-column">
-                            <div class="menu-title">Disk</div>
-                            <div class="menu-item"><span class="menu-number">1</span> Save Sequences</div>
-                            <div class="menu-item"><span class="menu-number">2</span> Save Sounds</div>
-                            <div class="menu-item"><span class="menu-number">3</span> Load Sequences</div>
-                            <div class="menu-item"><span class="menu-number">4</span> Load Segment #</div>
-                            <div class="menu-item"><span class="menu-number">5</span> Load Sounds</div>
-                            <div class="menu-item"><span class="menu-number">6</span> Load Sound #</div>
-                            <div class="menu-item"><span class="menu-number">7</span> Catalog Sequences</div>
-                            <div class="menu-item"><span class="menu-number">8</span> Catalog Sounds</div>
-                            <div class="menu-item"><span class="menu-number">9</span> Format/Copy Software</div>
-                            <div class="menu-item"><span class="menu-number">0</span> Load Sequences and Sounds</div>
+                        <div class="menu-column-wrapper">
+                            <div class="menu-column-controls">
+                                <div class="menu-column-led"></div>
+                                <div class="menu-column-btn"></div>
+                            </div>
+                            <div class="menu-column">
+                                <div class="menu-title">Disk</div>
+                                <div class="menu-item"><span class="menu-number">1</span> Save Sequences</div>
+                                <div class="menu-item"><span class="menu-number">2</span> Save Sounds</div>
+                                <div class="menu-item"><span class="menu-number">3</span> Load Sequences</div>
+                                <div class="menu-item"><span class="menu-number">4</span> Load Segment #</div>
+                                <div class="menu-item"><span class="menu-number">5</span> Load Sounds</div>
+                                <div class="menu-item"><span class="menu-number">6</span> Load Sound #</div>
+                                <div class="menu-item"><span class="menu-number">7</span> Catalog Sequences</div>
+                                <div class="menu-item"><span class="menu-number">8</span> Catalog Sounds</div>
+                                <div class="menu-item"><span class="menu-number">9</span> Format/Copy Software</div>
+                                <div class="menu-item"><span class="menu-number">0</span> Load Sequences and Sounds</div>
+                            </div>
                         </div>
                         <div class="menu-column sync">
                             <div class="menu-title">Sync</div>
+                            <div class="menu-column-controls-inline">
+                                <div class="menu-column-led"></div>
+                                <div class="menu-column-btn"></div>
+                            </div>
                             <div class="menu-item"><span class="menu-number">1</span> Internal</div>
                             <div class="menu-item"><span class="menu-number">2</span> MIDI</div>
                             <div class="menu-item"><span class="menu-number">3</span> SMPTE</div>
