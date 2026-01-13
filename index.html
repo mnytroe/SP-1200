@@ -160,6 +160,11 @@
             box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
         }
 
+        .menu-column-led.active {
+            background: radial-gradient(circle at 30% 30%, #ff6666 0%, #cc2222 100%);
+            box-shadow: 0 0 6px #ff2222, inset 0 1px 1px rgba(255,255,255,0.4);
+        }
+
         .menu-column-btn {
             width: 22px;
             height: 22px;
@@ -1462,5 +1467,149 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Pad Interactivity
+        document.querySelectorAll('.pad').forEach((pad, index) => {
+            pad.addEventListener('click', () => {
+                console.log(`Pad ${index + 1} clicked`);
+                // Add visual feedback
+                pad.style.transform = 'translateY(3px)';
+                setTimeout(() => {
+                    pad.style.transform = '';
+                }, 100);
+            });
+        });
+
+        // Button Interactivity (general)
+        document.querySelectorAll('.transport-btn, .record-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                console.log('Button clicked:', this.className);
+                // Visual feedback is handled by CSS :active state
+            });
+        });
+
+        // Menu Column Button LED Toggle
+        document.querySelectorAll('.menu-column-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Find the LED in the same controls container
+                const controlsContainer = this.closest('.menu-column-controls-vertical, .menu-column-controls-inline');
+                if (controlsContainer) {
+                    const led = controlsContainer.querySelector('.menu-column-led');
+                    if (led) {
+                        led.classList.toggle('active');
+                        console.log('Menu column LED toggled:', led.classList.contains('active'));
+                    }
+                }
+            });
+        });
+
+        // Performance Section LED Cycling
+        const perfLeft = document.querySelector('.perf-left');
+        if (perfLeft) {
+            const perfRows = perfLeft.querySelectorAll('.perf-row');
+            const perfBtn = perfRows[1].querySelector('.perf-btn'); // Mix button
+            const perfLeds = perfLeft.querySelectorAll('.perf-led');
+            
+            if (perfBtn) {
+                perfBtn.addEventListener('click', () => {
+                    // Find current active LED
+                    let currentIndex = Array.from(perfLeds).findIndex(led => led.classList.contains('active'));
+                    if (currentIndex === -1) currentIndex = 0;
+                    
+                    // Remove active from all
+                    perfLeds.forEach(led => led.classList.remove('active'));
+                    
+                    // Activate next LED (cycle: 0->1->2->0)
+                    const nextIndex = (currentIndex + 1) % perfLeds.length;
+                    perfLeds[nextIndex].classList.add('active');
+                    console.log('Performance LED cycled to index:', nextIndex);
+                });
+            }
+        }
+
+        // Bank Column LED Cycling
+        const bankColumn = document.querySelector('.bank-column');
+        if (bankColumn) {
+            const bankBtnRow = bankColumn.querySelector('.bank-btn-row');
+            const bankBtn = bankBtnRow ? bankBtnRow.querySelector('.perf-btn') : null;
+            const bankRows = bankColumn.querySelectorAll('.bank-row');
+            const bankLeds = Array.from(bankRows).map(row => row.querySelector('.bank-led'));
+            
+            if (bankBtn) {
+                bankBtn.addEventListener('click', () => {
+                    // Find current active LED
+                    let currentIndex = bankLeds.findIndex(led => led && led.classList.contains('active'));
+                    if (currentIndex === -1) currentIndex = 0;
+                    
+                    // Remove active from all
+                    bankLeds.forEach(led => { if (led) led.classList.remove('active'); });
+                    
+                    // Activate next LED (cycle: 0->1->2->3->0)
+                    const nextIndex = (currentIndex + 1) % bankLeds.length;
+                    if (bankLeds[nextIndex]) {
+                        bankLeds[nextIndex].classList.add('active');
+                        console.log('Bank LED cycled to index:', nextIndex);
+                    }
+                });
+            }
+        }
+
+        // Programming Section LED Cycling (Song/Segment)
+        const progUnitFirst = document.querySelector('.prog-unit-first');
+        if (progUnitFirst) {
+            const progBtn = progUnitFirst.querySelector('.prog-btn');
+            const progLeds = progUnitFirst.querySelectorAll('.prog-led-row .prog-led');
+            
+            if (progBtn && progLeds.length === 2) {
+                progBtn.addEventListener('click', () => {
+                    // Find current active LED
+                    let currentIndex = Array.from(progLeds).findIndex(led => led.classList.contains('active'));
+                    if (currentIndex === -1) currentIndex = 0;
+                    
+                    // Remove active from all
+                    progLeds.forEach(led => led.classList.remove('active'));
+                    
+                    // Activate next LED (cycle: 0->1->0)
+                    const nextIndex = (currentIndex + 1) % progLeds.length;
+                    progLeds[nextIndex].classList.add('active');
+                    console.log('Programming LED cycled to index:', nextIndex);
+                });
+            }
+        }
+
+        // Slider Interactivity
+        document.querySelectorAll('.slider-track').forEach((track, index) => {
+            const knob = track.querySelector('.slider-knob');
+            let isDragging = false;
+
+            const updateSlider = (e) => {
+                const rect = track.getBoundingClientRect();
+                const y = e.clientY - rect.top;
+                const percentage = Math.max(0, Math.min(100, (y / rect.height) * 100));
+                knob.style.top = percentage + '%';
+                console.log(`Slider ${index + 1}: ${Math.round(100 - percentage)}%`);
+            };
+
+            knob.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    updateSlider(e);
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            track.addEventListener('click', (e) => {
+                updateSlider(e);
+            });
+        });
+    </script>
 </body>
 </html>
