@@ -546,6 +546,14 @@
             margin-top: 3px;
         }
 
+        .pad-label {
+            font-size: 6px;
+            color: #a0a0a8;
+            margin-top: 3px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
         /* Right Section - Master Control */
         .right-section {
             width: 200px;
@@ -628,6 +636,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        .additional-controls .gain-section .record-btn {
+            margin-top: 12px;
         }
 
         .gain-label {
@@ -812,7 +824,7 @@
         .additional-controls {
             display: flex;
             justify-content: flex-start;
-            align-items: center;
+            align-items: flex-start;
             gap: 18px;
             position: absolute;
             top: 471px;
@@ -1288,9 +1300,18 @@
 
                 <!-- Additional Controls -->
                 <div class="additional-controls">
-                    <div class="pad"></div>
-                    <div class="pad"></div>
-                    <div class="record-btn"></div>
+                    <div class="pad-unit">
+                        <div class="pad"></div>
+                        <span class="pad-label">Tap/Repeat</span>
+                    </div>
+                    <div class="pad-unit">
+                        <div class="pad"></div>
+                        <span class="pad-label">Run/Stop</span>
+                    </div>
+                    <div class="gain-section">
+                        <div class="record-btn"></div>
+                        <span class="pad-label">Record/Edit</span>
+                    </div>
                 </div>
             </div>
 
